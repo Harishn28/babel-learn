@@ -45,9 +45,11 @@ include above 2 statements in the entry file of project. After transpiling those
   
  ![](images/usageEntry.png)
 
-For a give targets(Chrome:79 and node:8), import 'core-js' is replaced with individual require of 106 individual polyfills.
-IF we have node used useBuiltIns: 'entry', then all the polyfills in the core-js library would have included in output file(which is more that 106 polyfills).
+For a given targets(Chrome:79 and node:8), import 'core-js' is replaced with individual require of 106 individual polyfills.
+If we have node used useBuiltIns: 'entry', then all the polyfills in the core-js library would have included in output file(which is more that 106 polyfills).
 Out of 106 polyfills we have only need 2 polyfills for our code to work; Remaining polyfills are added to support target environment.
+
+Even if we have imported 'regenerator-runtime/runtime' in the source code, that polyfill is not there in the output file because both the targets natively supports generator and async functions.
 
 
 Now let's remove the target node:8 and use only Chrome:79 as target.
@@ -56,7 +58,7 @@ Now let's remove the target node:8 and use only Chrome:79 as target.
 No polyfills have been imported in output file because chrome(vesrion 79) by default supports Promise and Promise.finally functionality.
 
 
-useBuiltIns="usage"
+2.useBuiltIns="usage"
 
 include polyfills for esnext functionality which are not supported by target environment but used in our source code.
 

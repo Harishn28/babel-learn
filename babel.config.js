@@ -12,6 +12,15 @@ const presets = [
     ],
   ];
 
-
+  const plugins = [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        regenerator: true,
+        corejs: false,
+      }
+    ]
+  ]
   
-  module.exports = { presets };
+
+  module.exports = { presets, plugins };
