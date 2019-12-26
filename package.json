@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.7.7",
+    "@babel/runtime-corejs3": "^7.7.7",
     "core-js": "^3.6.1",
     "regenerator-runtime": "^0.13.3"
   },

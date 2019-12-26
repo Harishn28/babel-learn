@@ -64,3 +64,36 @@ include polyfills for esnext functionality which are not supported by target env
 
 ![](images/usageUsage.png)
 In outputfile only 2 polyfills have been included; since only those 2 polyfills are required to run our source code in the specified targets.
+
+
+## [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime)
+
+When doing certain transformation, Babel adds lot of helper code.
+
+Ex: when transforming async functions/generator functions babel adds few helper functions.
+
+If async functions are used in 10 files, then the helper functions will be added in all 10 files.
+
+Image showing the helper functions added by babel(see right tab). ```asyncGeneratorStep, _asyncToGenerator``` are helpers added by babel. If we have multiple files, it gets added in each file.
+![](images/trt1.png)
+
+[@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime) helps us avoid duplicates by referencing all helper functions from [@babel/runtime](https://babeljs.io/docs/en/babel-runtime).
+![](images/trt2.png)
+
+In order to use plugin-transform-runtime, we need to add [@babel/runtime](https://babeljs.io/docs/en/babel-runtime) as production dependency and [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime) as dev dependency.
+
+Also note the yellow highlight in above image. We need to exclude preset-env from importing [regenerator-runtime](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime) because now 
+[@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime) includes it from [@babel/runtime](https://babeljs.io/docs/en/babel-runtime). Otherwise runtime get's imported twice.
+
+
+All above mentioned ways of importing core-js polyfills will pollute the global scope. This is fine if we are using it in our app. If we are writing a library and we dont want to pollute the global scope.
+
+we can achieve this by using [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime) with [@babel/runtime-corejs2](https://babeljs.io/docs/en/babel-runtime-corejs2) as shown below.
+
+add [@babel/runtime-corejs3](https://github.com/babel/babel/tree/master/packages/babel-runtime-corejs3) as prod dependency instead of [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime).
+
+Remove ```useBuiltIns``` from preset-env.
+
+enable corejs in @babel/plugin-transform-runtime plugin options.
+![](images/trt3.png)
+

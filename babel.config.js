@@ -5,9 +5,13 @@ const presets = [
         corejs: { version: 3 },
         useBuiltIns: 'usage',
         targets: {
-          chrome: '79',
+          chrome: '50',
+          ie:'10',
           node: '8',
         },
+        exclude: [
+          "transform-regenerator"
+        ]
       },
     ],
   ];
@@ -17,7 +21,7 @@ const presets = [
       "@babel/plugin-transform-runtime",
       {
         regenerator: true,
-        corejs: false,
+        corejs: '3',
       }
     ]
   ]
