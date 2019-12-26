@@ -88,9 +88,9 @@ Also note the yellow highlight in above image. We need to exclude preset-env fro
 
 All above mentioned ways of importing core-js polyfills will pollute the global scope. This is fine if we are using it in our app. If we are writing a library and we dont want to pollute the global scope.
 
-we can achieve this by using [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime) with [@babel/runtime-corejs2](https://babeljs.io/docs/en/babel-runtime-corejs2) as shown below.
+we can achieve this by using [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime) with [@babel/runtime-corejs3](https://github.com/babel/babel/tree/master/packages/babel-runtime-corejs3) as shown below.
 
-add [@babel/runtime-corejs3](https://github.com/babel/babel/tree/master/packages/babel-runtime-corejs3) as prod dependency instead of [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime).
+add [@babel/runtime-corejs3](https://github.com/babel/babel/tree/master/packages/babel-runtime-corejs3) as prod dependency instead of [@babel/runtime](https://babeljs.io/docs/en/babel-runtime).
 
 Remove ```useBuiltIns``` from preset-env.
 
