@@ -95,5 +95,5 @@ add [@babel/runtime-corejs3](https://github.com/babel/babel/tree/master/packages
 Remove ```useBuiltIns``` from preset-env.
 
 enable corejs in @babel/plugin-transform-runtime plugin options.
-![](images/trt3.png)
+![](images/trt4.png)
 
