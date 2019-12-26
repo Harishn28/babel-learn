@@ -2,26 +2,16 @@ const presets = [
     [
       "@babel/env",
       {
-        corejs: { version: 3, proposals: true },
+        corejs: { version: 3 },
         useBuiltIns: 'usage',
         targets: {
-          chrome: '70',
+          chrome: '79',
           node: "8",
-          ie:'10',
         },
       },
     ],
   ];
 
-  const plugins = [
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        regenerator: false,
-        corejs: false,
-      }
-    ]
-  ]
+
   
-  module.exports = { presets, plugins };
-  // module.exports = { presets };
+  module.exports = { presets };

@@ -1,12 +1,8 @@
 
-
-const wait = (time) => new Promise(r => {
-    setTimeout(r, time);
+const p = new Promise((resolve) => {
+    resolve(2);
 })
 
-async function wru(){
-    await wait(1000).finally(r=>console.log('finally'));
-    console.log('wait Over');
-}
-
-wru();
+p.finally(() => {
+    console.log('Promise finally');
+})
