@@ -42,4 +42,4 @@ useBuiltIns="entry"
     ],
   ];```
   
-  ![Compiled with usageBuilInsEntry](https://github.com/Harishn28/babel-learn/blob/master/images/usageEntry.png)
+  ![Compiled with usageBuilInsEntry](https://raw.githubusercontent.com/Harishn28/babel-learn/master/images/usageEntry.png)
