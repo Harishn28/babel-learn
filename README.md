@@ -24,7 +24,9 @@ Above two ways of including polyfills includes all polyfills(even the ones which
 ## Using [core-js](https://github.com/zloirock/core-js) and [regenerator-runtime](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime) with [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env)
 
 preset-env provides a way to 
+
 1.include polyfills for all the esnext functionality which are not supported by target environments
+
 2.include polyfills for esnext functionality which are not supported by target environment but used in our source code.
 
 preset-env accepts an option ```useBuiltIns```. Depending upon the value provided to ```useBuiltIns``` Polyfills will be included differently.
@@ -33,31 +35,15 @@ preset-env accepts an option ```useBuiltIns```. Depending upon the value provide
 
 include polyfills for all the esnext functionality which are not supported by target environments irrespective of whether we used it in our source code or not.
 
-This requires as to put an 
+ 
 ```
 import 'core-js';
 import 'regenerator-runtime/runtime';
 ``` 
-statements in the beginning of our project. After transpiling those statements will be replaced with a polyfills that are necessary for given target.
 
-```
-const presets = [
-    [
-      "@babel/env",
-      {
-        corejs: { version: 3 },
-        useBuiltIns: 'entry',
-        targets: {
-          chrome: '70',
-          node: "8",
-          ie:'10',
-        },
-      },
-    ],
-  ];
-  ```
+include above 2 statements in the entry file of project. After transpiling those statements will be replaced with a polyfills that are necessary for given target.
   
-  ![](images/usageEntry.png)
+ ![](images/usageEntry.png)
 
 For a give targets(Chrome:79 and node:8), import 'core-js' is replaced with individual require of 106 individual polyfills.
 IF we have node used useBuiltIns: 'entry', then all the polyfills in the core-js library would have included in output file(which is more that 106 polyfills).
